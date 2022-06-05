@@ -41,8 +41,7 @@ export class ArenaComponent implements OnInit, OnDestroy {
   playAgain = true;
   thinking = true;
 
-  player1Form: FormGroup = this._fb.group({});
-  player2Form: FormGroup = this._fb.group({});
+  playerForm: FormGroup = this._fb.group({});
 
   players$: Observable<Player[]> | undefined;
 
@@ -54,7 +53,7 @@ export class ArenaComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.player1Form = this._fb.group({
+    this.playerForm = this._fb.group({
       hand: ['rock'],
     });
 
@@ -78,7 +77,7 @@ export class ArenaComponent implements OnInit, OnDestroy {
 
   private _setPlayerHand = (player: Player) => {
     if (player.type === PlayerType.Human) {
-      const { hand } = this.player1Form.value;
+      const { hand } = this.playerForm.value;
       player.hand = this._hands.find((h: Hand) => h.name === hand);
 
       return;
