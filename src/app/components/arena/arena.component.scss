@@ -1,0 +1,37 @@
+.container {
+  margin: 20px;
+}
+
+.form-container {
+  margin: 30px 0;
+}
+
+.input-name {
+  margin: 10px 0;
+}
+
+.radio-footer {
+  margin-bottom: 30px;
+}
+
+.footer,
+.header {
+  margin: 50px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer {
+  padding-top: 150px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.radio-button {
+  margin-top: 5px;
+}

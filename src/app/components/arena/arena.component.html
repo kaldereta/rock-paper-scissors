@@ -1,0 +1,75 @@
+<div class="container">
+  <ng-container *ngIf="players$ | async as players">
+    <div class="header">
+      <div>
+        <div>Player 1: {{ players[0]?.name || "" }}</div>
+        <div>Score: {{ players[0]?.score }}</div>
+      </div>
+      <div>
+        <div>Player 2: {{ players[1]?.name || "" }}</div>
+        <div>Score: {{ players[1]?.score }}</div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="playAgain && currentPlayerType === 1">
+      <div [formGroup]="player1Form" class="form-container">
+        <div class="radio-footer">
+          <div>{{ currentPlayer }}'s Turn</div>
+
+          <mat-radio-group class="radio-group" formControlName="hand">
+            <mat-radio-button class="radio-button" value="rock"
+              >Rock</mat-radio-button
+            >
+            <mat-radio-button class="radio-button" value="paper"
+              >Paper</mat-radio-button
+            >
+            <mat-radio-button class="radio-button" value="scissors"
+              >Scissors</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentPlayerType === 2">
+      <div *ngIf="thinking">
+        Please wait... Computer is thinking of what hand to play
+      </div>
+      <div *ngIf="!thinking">
+        Computer chose a hand to play. You can lock in the hand now!
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!playAgain">
+      <div>{{ result }}</div>
+    </ng-container>
+
+    <ng-container>
+      <div class="footer">
+        <button
+          *ngIf="playAgain"
+          mat-flat-button
+          color="primary"
+          [disabled]="currentPlayerType === 2 && thinking"
+          (click)="play(playerIndex)"
+        >
+          {{ playButtonText }}
+        </button>
+        <button
+          *ngIf="!playAgain"
+          mat-flat-button
+          color="primary"
+          (click)="continue()"
+        >
+          Play another Hand?
+        </button>
+        <button mat-flat-button color="primary" (click)="resetPlayers()">
+          Reset PLayers
+        </button>
+        <button mat-flat-button color="accent" class="" (click)="save()">
+          Save Game
+        </button>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+  <ng-container>
+    <div [formGroup]="playersOption" class="form-container">
+      <div class="radio-footer">
+        <div>Pick Players Option</div>
+
+        <mat-radio-group class="radio-group" formControlName="options">
+          <mat-radio-button class="radio-button" value="1"
+            >Human vs Human</mat-radio-button
+          >
+          <mat-radio-button class="radio-button" value="2"
+            >Human vs Computer</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div [formGroup]="playersForm">
+      <div class="input-name">
+        <input
+          type="text"
+          matInput
+          placeholder="Name of Player 1"
+          formControlName="player1"
+        />
+      </div>
+
+      <div class="input-name">
+        <input
+          type="text"
+          matInput
+          placeholder="Name of Player 2"
+          formControlName="player2"
+          [readonly]="disablePlayer2"
+        />
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <div class="footer">
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="disablePlay"
+        (click)="play()"
+      >
+        Let's Play
+      </button>
+      <button mat-flat-button color="accent" (click)="loadGame()">
+        Load Saved Game
+      </button>
+    </div>
+  </ng-container>
+</div>
